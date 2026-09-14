@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhijeet Singh — Digital Resume</title>
+<meta name="description" content="Abhijeet Singh — Student, AI & Digital Creative Enthusiast, Fast Learner">
+<style>
+:root{
+  --bg:#f7f3ec; --ink:#17191c; --muted:#676c74; --blue:#3157a4;
+  --blue-soft:#dfe7f7; --sage:#dce6d9; --peach:#f2ddd0;
+  --card:rgba(255,255,255,.70); --line:#d9d5ce;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.55;overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;
+  background-image:radial-gradient(#777 0.45px,transparent .45px);background-size:7px 7px;
+  mask-image:linear-gradient(to bottom,black,transparent 75%);
+}
+a{color:inherit;text-decoration:none}
+.blob{position:fixed;border-radius:50%;filter:blur(2px);z-index:-1;animation:float 9s ease-in-out infinite}
+.b1{width:260px;height:260px;background:var(--blue-soft);right:-80px;top:70px}
+.b2{width:170px;height:170px;background:var(--peach);left:-60px;bottom:100px;animation-delay:-3s}
+@keyframes float{50%{transform:translate(12px,-18px) scale(1.04)}}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;
+  align-items:center;padding:17px clamp(22px,5vw,70px);backdrop-filter:blur(16px);
+  background:rgba(247,243,236,.78);border-bottom:1px solid rgba(217,213,206,.65)
+}
+.nav-name{font-weight:800;letter-spacing:.08em;font-size:12px}
+nav .links{display:flex;gap:22px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+nav .links a:hover{color:var(--blue)}
+.wrap{width:min(1120px,90vw);margin:auto}
+.hero{min-height:100vh;display:grid;align-items:center;padding:130px 0 80px}
+.kicker{font-size:11px;letter-spacing:.16em;font-weight:800;color:var(--blue);text-transform:uppercase;margin-bottom:24px}
+h1{font-size:clamp(62px,12vw,150px);line-height:.82;letter-spacing:-.075em;margin:0;max-width:900px}
+.hero-sub{margin-top:28px;font-size:clamp(15px,2vw,21px);color:var(--muted);max-width:650px}
+.contact{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+.chip{padding:9px 13px;border-radius:999px;background:white;border:1px solid var(--line);font-size:12px}
+.scroll{margin-top:70px;display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+.scroll i{width:45px;height:1px;background:var(--blue);display:block}
+section{padding:105px 0;border-top:1px solid var(--line)}
+.section-head{display:grid;grid-template-columns:130px 1fr;gap:35px;margin-bottom:48px}
+.num{font-size:11px;color:var(--blue);font-weight:800;letter-spacing:.14em}
+h2{font-size:clamp(36px,6vw,70px);line-height:.95;letter-spacing:-.055em;margin:0}
+.profile-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:70px}
+.lead{font-size:clamp(18px,2.3vw,27px);line-height:1.35;letter-spacing:-.025em}
+.side-note{border-left:2px solid var(--blue);padding-left:20px;color:var(--muted);font-size:13px}
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.skill-card,.project,.edu,.strength{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:25px;box-shadow:0 15px 45px rgba(30,35,40,.045)}
+.skill-card{transition:.35s}
+.skill-card:hover,.project:hover,.edu:hover{transform:translateY(-5px);box-shadow:0 22px 55px rgba(30,35,40,.09)}
+.skill-card h3,.strength h3{font-size:12px;letter-spacing:.12em;color:var(--blue);margin:0 0 12px;text-transform:uppercase}
+.skill-card p{margin:0;color:#34383e;font-size:14px}
+.projects{display:grid;gap:18px}
+.project{position:relative;overflow:hidden;padding:32px}
+.project:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-70px;top:-70px;background:var(--blue-soft)}
+.project:nth-child(2):after{background:var(--sage)}
+.project:nth-child(3):after{background:var(--peach)}
+.project-top{display:flex;justify-content:space-between;gap:25px;position:relative;z-index:1}
+.project-no{font-size:11px;font-weight:800;color:var(--blue)}
+.project h3{font-size:22px;line-height:1.05;max-width:700px;margin:0}
+.meta{font-size:11px;color:var(--blue);font-weight:700;margin-top:9px}
+.project p{max-width:780px;color:var(--muted);font-size:14px;margin:18px 0 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.edu{margin-bottom:14px}
+.edu .year{color:var(--blue);font-size:11px;font-weight:800;letter-spacing:.1em}
+.edu h3{margin:7px 0 4px;font-size:19px}
+.edu p{margin:0;color:var(--muted);font-size:13px}
+.strengths{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.strength p{font-size:13px;color:var(--muted);margin:0}
+.tags{display:flex;flex-wrap:wrap;gap:9px}
+.tag{font-size:11px;padding:9px 12px;border-radius:999px;background:white;border:1px solid var(--line)}
+.objective{font-size:clamp(23px,3.2vw,40px);line-height:1.15;letter-spacing:-.035em;max-width:950px}
+footer{padding:55px 0 35px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.reveal{opacity:0;transform:translateY(28px);animation:reveal .8s cubic-bezier(.2,.75,.25,1) forwards}
+.d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.28s}.d4{animation-delay:.38s}
+@keyframes reveal{to{opacity:1;transform:none}}
+@media (max-width:760px){
+  nav .links{display:none}.hero{min-height:90vh;padding-top:120px}
+  h1{font-size:clamp(58px,19vw,105px)}
+  .section-head,.profile-grid,.two{grid-template-columns:1fr;gap:20px}
+  .skills,.strengths{grid-template-columns:1fr}
+  section{padding:75px 0}
+  .project-top{display:block}
+  footer{display:block;line-height:2}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+
+<nav>
+  <div class="nav-name">ABHIJEET SINGH</div>
+  <div class="links">
+    <a href="#profile">Profile</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#education">Education</a>
+  </div>
+</nav>
+
+<main class="wrap">
+<header class="hero">
+  <div>
+    <div class="kicker reveal">Student · AI & Digital Creative Enthusiast · Fast Learner</div>
+    <h1 class="reveal d1">ABHIJEET<br><span style="color:var(--blue)">SINGH</span></h1>
+    <p class="hero-sub reveal d2">A curious undergraduate building skills at the intersection of communication, creativity, artificial intelligence and digital content.</p>
+    <div class="contact reveal d3">
+      <span class="chip">9971971805</span><span class="chip">abhijeetsingh01115@gmail.com</span><span class="chip">Delhi, India</span>
+    </div>
+    <div class="scroll reveal d4"><i></i> Scroll to explore</div>
+  </div>
+</header>
+
+<section id="profile">
+  <div class="section-head"><div class="num">01 / PROFILE</div><h2>Curious by nature.<br>Creative by practice.</h2></div>
+  <div class="profile-grid">
+    <p class="lead">Motivated and curious undergraduate student pursuing B.A. English (Honours) at Delhi University, with a strong interest in Artificial Intelligence, digital content, creative technology, social media and emerging AI-powered workflows.</p>
+    <div class="side-note">Experienced through independent projects in generative AI, prompt development, AI-assisted visual creation and digital creator workflows. Strong communication, creative thinking, adaptability and self-learning mindset.</div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-head"><div class="num">02 / SKILLS</div><h2>What I can<br>bring to a team.</h2></div>
+  <div class="skills">
+    <article class="skill-card"><h3>AI & Technology</h3><p>Generative AI · Prompt Engineering · AI-assisted Workflows · AI Image Generation · AI Content Creation · AI Character Concepts · Creative AI Experimentation · AI Workflow Planning</p></article>
+    <article class="skill-card"><h3>Digital & Creative</h3><p>Content Ideation · Digital Content Planning · Social Media Concepts · UGC Content Concepts · Visual Direction · Creative Brief Development · Fashion & Lifestyle Content Concepts · Creative Writing</p></article>
+    <article class="skill-card"><h3>Digital Productivity</h3><p>Google Colab Fundamentals · AI Tools & Platforms · Online Research · Digital Troubleshooting · Workflow Planning · Rapid Tool Learning</p></article>
+    <article class="skill-card"><h3>Professional</h3><p>Communication · Creative Thinking · Problem Solving · Adaptability · Team Collaboration · Time Management · Attention to Detail · Self-Learning</p></article>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-head"><div class="num">03 / PROJECTS</div><h2>Independent work,<br>real experimentation.</h2></div>
+  <div class="projects">
+    <article class="project"><div class="project-top"><div><div class="project-no">01</div><h3>AI VIRTUAL INFLUENCER / VIRTUAL GIRL MODEL</h3><div class="meta">Independent Personal Project · AI + Content + Social Media</div></div></div><p>Explored a creator-style AI character workflow covering identity/face consistency, fashion, lifestyle, UGC and social content; detailed prompt development; multilingual concepts in English, Hindi, French, Spanish, Japanese and Chinese; social workflows for captions, hashtags, publishing, comments, replies and DMs; plus AI voice, personality, memory and live-content concepts.</p></article>
+    <article class="project"><div class="project-top"><div><div class="project-no">02</div><h3>AI IMAGE & FASHION CONTENT WORKFLOW</h3><div class="meta">Independent Creative Project · Generative AI</div></div></div><p>Built structured prompts from visual references covering outfits, poses, hairstyles, accessories, environments and lighting, with emphasis on identity consistency, realism and social-ready fashion/lifestyle outputs.</p></article>
+    <article class="project"><div class="project-top"><div><div class="project-no">03</div><h3>AI-ASSISTED DIGITAL CONTENT EXPLORATION</h3><div class="meta">Independent Learning Project · AI + Digital Media</div></div></div><p>Explored content ideation, AI visual content, UGC concepts, trend-based creative, social planning, multilingual concepts and AI-powered creator workflows.</p></article>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-head"><div class="num">04 / EDUCATION</div><h2>Learning the language<br>of ideas.</h2></div>
+  <div class="two">
+    <div>
+      <article class="edu"><div class="year">CURRENTLY PURSUING</div><h3>B.A. English (Honours)</h3><p>Delhi University</p><p style="margin-top:10px">Focus on communication, written expression, critical thinking, language and analytical skills.</p></article>
+      <article class="edu"><div class="year">2025</div><h3>Class XII</h3><p>Government Co-Ed Senior Secondary School, Rohini, Sector 15</p></article>
+      <article class="edu"><div class="year">2023</div><h3>Class X</h3><p>Government Co-Ed Senior Secondary School, Rohini, Sector 15</p></article>
+    </div>
+    <div>
+      <div class="kicker" style="margin-top:4px">Professional strengths</div>
+      <div class="strengths">
+        <div class="strength"><h3>Creative Mindset</h3><p>Approaches ideas visually, experimentally and with curiosity.</p></div>
+        <div class="strength"><h3>AI Curiosity</h3><p>Actively explores emerging AI tools, workflows and applications.</p></div>
+        <div class="strength"><h3>Fast Learner</h3><p>Comfortable learning new tools independently through experimentation.</p></div>
+        <div class="strength"><h3>Communication</h3><p>Strong interest in English, writing and clear digital communication.</p></div>
+        <div class="strength"><h3>Adaptability</h3><p>Open to changing workflows, technologies and fast-moving environments.</p></div>
+        <div class="strength"><h3>Problem Solving</h3><p>Enjoys troubleshooting and turning rough ideas into workable workflows.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><div class="num">05 / INTERESTS</div><h2>Where I want<br>to explore next.</h2></div>
+  <div class="tags">
+    <span class="tag">Artificial Intelligence</span><span class="tag">Generative AI</span><span class="tag">Prompt Engineering</span>
+    <span class="tag">Digital Media</span><span class="tag">Social Media</span><span class="tag">Content Creation</span>
+    <span class="tag">AI Automation</span><span class="tag">Creative Technology</span><span class="tag">Virtual Influencers</span>
+    <span class="tag">Fashion & Lifestyle Content</span><span class="tag">Digital Marketing</span><span class="tag">Emerging Technology</span>
+  </div>
+  <div style="margin-top:50px" class="two">
+    <div><div class="kicker">Languages</div><div class="tags"><span class="tag">English</span><span class="tag">Hindi</span><span class="tag">Punjabi</span></div></div>
+    <div><div class="kicker">Entry-level direction</div><div class="tags"><span class="tag">AI / AI Operations</span><span class="tag">AI Content</span><span class="tag">Digital Media</span><span class="tag">Social Media</span><span class="tag">Marketing</span><span class="tag">Operations</span><span class="tag">Communication</span><span class="tag">Creative Technology</span></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><div class="num">06 / OBJECTIVE</div><h2>Start small.<br>Build seriously.</h2></div>
+  <p class="objective">To begin my professional career in an environment where I can combine communication, creativity and technology, gain practical industry experience, contribute to meaningful projects and continuously develop my skills in emerging digital and AI-driven fields.</p>
+</section>
+
+<footer><span>ABHIJEET SINGH · DELHI · 2026</span><span>Communication × Creativity × Technology</span></footer>
+</main>
+</body>
+</html>
